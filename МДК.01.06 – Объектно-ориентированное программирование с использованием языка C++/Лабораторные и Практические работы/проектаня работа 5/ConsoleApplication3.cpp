@@ -1,20 +1,64 @@
-﻿// ConsoleApplication3.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
+﻿#include <iostream>
+#include <fstream>
+#include <string>
+#include <vector>
 
-#include <iostream>
+using namespace std;
+ifstream file("log.txt");
 
-int main()
+bool isInfo(const string& line)
 {
-    std::cout << "Hello World!\n";
+    return line.find("INFO") != string::npos;
+
 }
 
-// Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
-// Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
+bool isWarning(const string& line)
+{
+    return line.find("WARNING") != string::npos;
+}
 
-// Советы по началу работы 
-//   1. В окне обозревателя решений можно добавлять файлы и управлять ими.
-//   2. В окне Team Explorer можно подключиться к системе управления версиями.
-//   3. В окне "Выходные данные" можно просматривать выходные данные сборки и другие сообщения.
-//   4. В окне "Список ошибок" можно просматривать ошибки.
-//   5. Последовательно выберите пункты меню "Проект" > "Добавить новый элемент", чтобы создать файлы кода, или "Проект" > "Добавить существующий элемент", чтобы добавить в проект существующие файлы кода.
-//   6. Чтобы снова открыть этот проект позже, выберите пункты меню "Файл" > "Открыть" > "Проект" и выберите SLN-файл.
+bool isError(const string& line)
+{
+    return line.find("ERROR") != string::npos;
+}
+
+
+
+int main() {
+    int info_counter = 0;
+    int warning_counter = 0;
+    int error_counter = 0;
+    string line;
+    vector<string> error_log;
+
+    if (!file) {
+        cout << "File log.txt is not found";
+        return 0;
+    }
+    else
+    {
+        cout << "Statistic:" << endl;
+        while (getline(file, line))
+        {
+            if (isInfo(line)) {
+                info_counter++;
+            }
+            else if (isWarning(line)) {
+                warning_counter++;
+            }
+            else if (isError(line)) {
+                error_counter++;
+                error_log.push_back(line);
+            }
+        }
+        cout << "INFO: " << info_counter << endl;
+        cout << "WARNING: " << warning_counter << endl;
+        cout << "ERROR: " << error_counter << endl;
+
+        cout << "\nErrors:" << endl;
+        for (string e : error_log) {
+            cout << e << endl;
+        }
+    }
+    file.close();
+}
