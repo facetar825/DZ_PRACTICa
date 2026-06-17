@@ -1,0 +1,212 @@
+﻿<Window x:Class="MedicalDiary.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
+
+        Title="Медицинский дневник"
+        Height="600"
+        Width="1000">
+
+
+    <Grid>
+
+
+        <TabControl>
+
+
+
+            <!-- ЗАПИСИ -->
+
+            <TabItem Header="Записи">
+
+
+                <Grid Margin="10">
+
+
+                    <Grid.RowDefinitions>
+
+                        <RowDefinition Height="Auto"/>
+
+                        <RowDefinition Height="*"/>
+
+                    </Grid.RowDefinitions>
+
+
+
+                    <StackPanel Orientation="Horizontal">
+
+
+                        <Button Content="Добавить"
+                                Width="120"
+                                Margin="5"
+                                Click="Add_Click"/>
+
+
+                        <Button Content="Изменить"
+                                Width="120"
+                                Margin="5"
+                                Click="Edit_Click"/>
+
+
+                        <Button Content="Удалить"
+                                Width="120"
+                                Margin="5"
+                                Click="Delete_Click"/>
+
+
+                        <Button Content="Сохранить JSON"
+                                Width="150"
+                                Margin="5"
+                                Click="Save_Click"/>
+
+
+                        <Button Content="Загрузить"
+                                Width="120"
+                                Margin="5"
+                                Click="Load_Click"/>
+                        <Button Content="PDF отчет"
+                                Width="120"
+                                Margin="5"
+                                Click="Pdf_Click"/>
+
+
+                    </StackPanel>
+
+
+
+
+                    <DataGrid x:Name="RecordsGrid"
+                              Grid.Row="1"
+                              Margin="0,10,0,0"
+                              AutoGenerateColumns="False">
+
+
+
+                        <DataGrid.Columns>
+
+
+                            <DataGridTextColumn
+                                Header="Дата"
+                                Binding="{Binding DateTime}"
+                                Width="150"/>
+
+
+
+                            <DataGridTextColumn
+                                Header="Сист."
+                                Binding="{Binding Systolic}"
+                                Width="80"/>
+
+
+
+                            <DataGridTextColumn
+                                Header="Диаст."
+                                Binding="{Binding Diastolic}"
+                                Width="80"/>
+
+
+
+                            <DataGridTextColumn
+                                Header="Пульс"
+                                Binding="{Binding Pulse}"
+                                Width="80"/>
+
+
+
+                            <DataGridTextColumn
+                                Header="Сахар"
+                                Binding="{Binding Sugar}"
+                                Width="80"/>
+
+
+
+                            <DataGridTextColumn
+                                Header="Приём пищи"
+                                Binding="{Binding MealType}"
+                                Width="120"/>
+
+
+
+                            <DataGridTextColumn
+                                Header="Комментарий"
+                                Binding="{Binding Comment}"
+                                Width="*"/>
+
+
+                        </DataGrid.Columns>
+
+
+
+                    </DataGrid>
+
+
+
+                </Grid>
+
+
+            </TabItem>
+
+
+
+
+
+
+            <!-- ГРАФИК ДАВЛЕНИЯ -->
+
+
+            <TabItem Header="Давление">
+
+
+                <Grid>
+
+
+                    <lvc:CartesianChart x:Name="PressureChart">
+
+               
+
+                    </lvc:CartesianChart>
+
+
+                </Grid>
+
+
+            </TabItem>
+
+
+
+
+
+
+
+            <!-- ГРАФИК САХАРА -->
+
+
+            <TabItem Header="Сахар">
+
+
+                <Grid>
+
+
+                    <lvc:CartesianChart x:Name="SugarChart">
+
+
+                    </lvc:CartesianChart>
+
+
+                </Grid>
+
+
+            </TabItem>
+
+
+
+
+        </TabControl>
+
+
+
+    </Grid>
+
+
+
+</Window>

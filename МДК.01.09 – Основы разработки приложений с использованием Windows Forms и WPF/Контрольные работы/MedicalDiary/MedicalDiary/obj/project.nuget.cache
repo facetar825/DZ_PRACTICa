@@ -1,0 +1,161 @@
+{
+  "version": 2,
+  "dgSpecHash": "RYOaEAmMiyc=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Я\\source\\repos\\MedicalDiary\\MedicalDiary\\MedicalDiary.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Я\\.nuget\\packages\\harfbuzzsharp\\8.3.1.1\\harfbuzzsharp.8.3.1.1.nupkg.sha512",
+    "C:\\Users\\Я\\.nuget\\packages\\harfbuzzsharp.nativeassets.macos\\8.3.1.1\\harfbuzzsharp.nativeassets.macos.8.3.1.1.nupkg.sha512",
+    "C:\\Users\\Я\\.nuget\\packages\\harfbuzzsharp.nativeassets.win32\\8.3.1.1\\harfbuzzsharp.nativeassets.win32.8.3.1.1.nupkg.sha512",
+    "C:\\Users\\Я\\.nuget\\packages\\livechartscore\\2.0.4\\livechartscore.2.0.4.nupkg.sha512",
+    "C:\\Users\\Я\\.nuget\\packages\\livechartscore.skiasharpview\\2.0.4\\livechartscore.skiasharpview.2.0.4.nupkg.sha512",
+    "C:\\Users\\Я\\.nuget\\packages\\livechartscore.skiasharpview.wpf\\2.0.4\\livechartscore.skiasharpview.wpf.2.0.4.nupkg.sha512",
+    "C:\\Users\\Я\\.nuget\\packages\\opentk\\3.3.1\\opentk.3.3.1.nupkg.sha512",
+    "C:\\Users\\Я\\.nuget\\packages\\opentk.glwpfcontrol\\3.3.0\\opentk.glwpfcontrol.3.3.0.nupkg.sha512",
+    "C:\\Users\\Я\\.nuget\\packages\\pdfsharpcore\\1.3.67\\pdfsharpcore.1.3.67.nupkg.sha512",
+    "C:\\Users\\Я\\.nuget\\packages\\sharpziplib\\1.4.2\\sharpziplib.1.4.2.nupkg.sha512",
+    "C:\\Users\\Я\\.nuget\\packages\\sixlabors.fonts\\1.0.0-beta17\\sixlabors.fonts.1.0.0-beta17.nupkg.sha512",
+    "C:\\Users\\Я\\.nuget\\packages\\sixlabors.imagesharp\\1.0.4\\sixlabors.imagesharp.1.0.4.nupkg.sha512",
+    "C:\\Users\\Я\\.nuget\\packages\\skiasharp\\3.119.0\\skiasharp.3.119.0.nupkg.sha512",
+    "C:\\Users\\Я\\.nuget\\packages\\skiasharp.harfbuzz\\3.119.0\\skiasharp.harfbuzz.3.119.0.nupkg.sha512",
+    "C:\\Users\\Я\\.nuget\\packages\\skiasharp.nativeassets.macos\\3.119.0\\skiasharp.nativeassets.macos.3.119.0.nupkg.sha512",
+    "C:\\Users\\Я\\.nuget\\packages\\skiasharp.nativeassets.win32\\3.119.0\\skiasharp.nativeassets.win32.3.119.0.nupkg.sha512",
+    "C:\\Users\\Я\\.nuget\\packages\\skiasharp.views.desktop.common\\3.119.0\\skiasharp.views.desktop.common.3.119.0.nupkg.sha512",
+    "C:\\Users\\Я\\.nuget\\packages\\skiasharp.views.wpf\\3.119.0\\skiasharp.views.wpf.3.119.0.nupkg.sha512",
+    "C:\\Users\\Я\\.nuget\\packages\\system.text.json\\10.0.9\\system.text.json.10.0.9.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1510",
+      "level": "Warning",
+      "message": "PackageReference System.Text.Json не будет урезано. Рассмотрите возможность удаления этого пакета из зависимостей, так как он, вероятно, не требуется.",
+      "projectPath": "C:\\Users\\Я\\source\\repos\\MedicalDiary\\MedicalDiary\\MedicalDiary.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\Я\\source\\repos\\MedicalDiary\\MedicalDiary\\MedicalDiary.csproj",
+      "libraryId": "System.Text.Json",
+      "targetGraphs": [
+        "net10.0-windows7.0"
+      ]
+    },
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "message": "У пакета \"SixLabors.ImageSharp\" 1.0.4 есть известная уязвимость https://github.com/advisories/GHSA-2cmq-823j-5qj8 (уровень серьезности: высокий уровень)",
+      "projectPath": "C:\\Users\\Я\\source\\repos\\MedicalDiary\\MedicalDiary\\MedicalDiary.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\Я\\source\\repos\\MedicalDiary\\MedicalDiary\\MedicalDiary.csproj",
+      "libraryId": "SixLabors.ImageSharp",
+      "targetGraphs": [
+        "net10.0-windows"
+      ]
+    },
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "message": "У пакета \"SixLabors.ImageSharp\" 1.0.4 есть известная уязвимость https://github.com/advisories/GHSA-5x7m-6737-26cr (уровень серьезности: средний уровень)",
+      "projectPath": "C:\\Users\\Я\\source\\repos\\MedicalDiary\\MedicalDiary\\MedicalDiary.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\Я\\source\\repos\\MedicalDiary\\MedicalDiary\\MedicalDiary.csproj",
+      "libraryId": "SixLabors.ImageSharp",
+      "targetGraphs": [
+        "net10.0-windows"
+      ]
+    },
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "message": "У пакета \"SixLabors.ImageSharp\" 1.0.4 есть известная уязвимость https://github.com/advisories/GHSA-63p8-c4ww-9cg7 (уровень серьезности: высокий уровень)",
+      "projectPath": "C:\\Users\\Я\\source\\repos\\MedicalDiary\\MedicalDiary\\MedicalDiary.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\Я\\source\\repos\\MedicalDiary\\MedicalDiary\\MedicalDiary.csproj",
+      "libraryId": "SixLabors.ImageSharp",
+      "targetGraphs": [
+        "net10.0-windows"
+      ]
+    },
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "message": "У пакета \"SixLabors.ImageSharp\" 1.0.4 есть известная уязвимость https://github.com/advisories/GHSA-65x7-c272-7g7r (уровень серьезности: высокий уровень)",
+      "projectPath": "C:\\Users\\Я\\source\\repos\\MedicalDiary\\MedicalDiary\\MedicalDiary.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\Я\\source\\repos\\MedicalDiary\\MedicalDiary\\MedicalDiary.csproj",
+      "libraryId": "SixLabors.ImageSharp",
+      "targetGraphs": [
+        "net10.0-windows"
+      ]
+    },
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "message": "У пакета \"SixLabors.ImageSharp\" 1.0.4 есть известная уязвимость https://github.com/advisories/GHSA-g85r-6x2q-45w7 (уровень серьезности: средний уровень)",
+      "projectPath": "C:\\Users\\Я\\source\\repos\\MedicalDiary\\MedicalDiary\\MedicalDiary.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\Я\\source\\repos\\MedicalDiary\\MedicalDiary\\MedicalDiary.csproj",
+      "libraryId": "SixLabors.ImageSharp",
+      "targetGraphs": [
+        "net10.0-windows"
+      ]
+    },
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "message": "У пакета \"SixLabors.ImageSharp\" 1.0.4 есть известная уязвимость https://github.com/advisories/GHSA-qxrv-gp6x-rc23 (уровень серьезности: средний уровень)",
+      "projectPath": "C:\\Users\\Я\\source\\repos\\MedicalDiary\\MedicalDiary\\MedicalDiary.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\Я\\source\\repos\\MedicalDiary\\MedicalDiary\\MedicalDiary.csproj",
+      "libraryId": "SixLabors.ImageSharp",
+      "targetGraphs": [
+        "net10.0-windows"
+      ]
+    },
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "message": "У пакета \"SixLabors.ImageSharp\" 1.0.4 есть известная уязвимость https://github.com/advisories/GHSA-rxmq-m78w-7wmc (уровень серьезности: средний уровень)",
+      "projectPath": "C:\\Users\\Я\\source\\repos\\MedicalDiary\\MedicalDiary\\MedicalDiary.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\Я\\source\\repos\\MedicalDiary\\MedicalDiary\\MedicalDiary.csproj",
+      "libraryId": "SixLabors.ImageSharp",
+      "targetGraphs": [
+        "net10.0-windows"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "message": "Пакет \"OpenTK 3.3.1\" был восстановлен с помощью \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\", а не целевой платформы проекта \"net10.0-windows7.0\". Этот пакет может быть не полностью совместим с вашим проектом.",
+      "projectPath": "C:\\Users\\Я\\source\\repos\\MedicalDiary\\MedicalDiary\\MedicalDiary.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\Я\\source\\repos\\MedicalDiary\\MedicalDiary\\MedicalDiary.csproj",
+      "libraryId": "OpenTK",
+      "targetGraphs": [
+        "net10.0-windows"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "message": "Пакет \"OpenTK.GLWpfControl 3.3.0\" был восстановлен с помощью \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\", а не целевой платформы проекта \"net10.0-windows7.0\". Этот пакет может быть не полностью совместим с вашим проектом.",
+      "projectPath": "C:\\Users\\Я\\source\\repos\\MedicalDiary\\MedicalDiary\\MedicalDiary.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\Я\\source\\repos\\MedicalDiary\\MedicalDiary\\MedicalDiary.csproj",
+      "libraryId": "OpenTK.GLWpfControl",
+      "targetGraphs": [
+        "net10.0-windows"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "message": "Пакет \"SkiaSharp.Views.WPF 3.119.0\" был восстановлен с помощью \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\", а не целевой платформы проекта \"net10.0-windows7.0\". Этот пакет может быть не полностью совместим с вашим проектом.",
+      "projectPath": "C:\\Users\\Я\\source\\repos\\MedicalDiary\\MedicalDiary\\MedicalDiary.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\Я\\source\\repos\\MedicalDiary\\MedicalDiary\\MedicalDiary.csproj",
+      "libraryId": "SkiaSharp.Views.WPF",
+      "targetGraphs": [
+        "net10.0-windows"
+      ]
+    }
+  ]
+}
