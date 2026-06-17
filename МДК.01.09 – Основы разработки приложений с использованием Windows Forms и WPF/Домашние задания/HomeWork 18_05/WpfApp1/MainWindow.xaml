@@ -1,0 +1,110 @@
+﻿<Window x:Class="DailyExpenses.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Ежедневные траты" Height="450" Width="400"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Учёт ежедневных трат" FontSize="24" FontWeight="Bold"
+                   HorizontalAlignment="Center" Margin="0,0,0,10"/>
+
+        <!-- Понедельник -->
+        <Grid Grid.Row="1" Margin="0,3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="Пн:" FontSize="16" VerticalAlignment="Center" Margin="0,0,10,0"/>
+            <TextBox Grid.Column="1" x:Name="MondayBox" FontSize="16" VerticalContentAlignment="Center"/>
+        </Grid>
+
+        <Grid Grid.Row="2" Margin="0,3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="Вт:" FontSize="16" VerticalAlignment="Center" Margin="0,0,10,0"/>
+            <TextBox Grid.Column="1" x:Name="TuesdayBox" FontSize="16" VerticalContentAlignment="Center"/>
+        </Grid>
+
+        <Grid Grid.Row="3" Margin="0,3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="Ср:" FontSize="16" VerticalAlignment="Center" Margin="0,0,10,0"/>
+            <TextBox Grid.Column="1" x:Name="WednesdayBox" FontSize="16" VerticalContentAlignment="Center"/>
+        </Grid>
+
+        <Grid Grid.Row="4" Margin="0,3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="Чт:" FontSize="16" VerticalAlignment="Center" Margin="0,0,10,0"/>
+            <TextBox Grid.Column="1" x:Name="ThursdayBox" FontSize="16" VerticalContentAlignment="Center"/>
+        </Grid>
+
+        <Grid Grid.Row="5" Margin="0,3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="Пт:" FontSize="16" VerticalAlignment="Center" Margin="0,0,10,0"/>
+            <TextBox Grid.Column="1" x:Name="FridayBox" FontSize="16" VerticalContentAlignment="Center"/>
+        </Grid>
+
+        <Grid Grid.Row="6" Margin="0,3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="Сб:" FontSize="16" VerticalAlignment="Center" Margin="0,0,10,0"/>
+            <TextBox Grid.Column="1" x:Name="SaturdayBox" FontSize="16" VerticalContentAlignment="Center"/>
+        </Grid>
+
+        <Grid Grid.Row="7" Margin="0,3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="Вс:" FontSize="16" VerticalAlignment="Center" Margin="0,0,10,0"/>
+            <TextBox Grid.Column="1" x:Name="SundayBox" FontSize="16" VerticalContentAlignment="Center"/>
+        </Grid>
+
+        <!-- Кнопка -->
+        <Button Grid.Row="8" x:Name="CalcButton" Content="Посчитать" Click="CalcButton_Click"
+                FontSize="20" FontWeight="Bold" Foreground="White"
+                Background="#3498DB" BorderThickness="0" Padding="15,5"
+                HorizontalAlignment="Center" Width="200" Height="50" Margin="0,10,0,0">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <!-- Результаты -->
+        <StackPanel Grid.Row="9" Margin="0,15,0,0">
+            <Border Background="#F0F8FF" CornerRadius="8" Padding="10">
+                <StackPanel>
+                    <TextBlock x:Name="SumResult" Text="Общая сумма: 0" FontSize="16" FontWeight="SemiBold"/>
+                    <TextBlock x:Name="AvgResult" Text="Средний расход в день: 0" FontSize="16" FontWeight="SemiBold" Margin="0,5,0,0"/>
+                    <TextBlock x:Name="MaxResult" Text="Максимальный расход за день: 0" FontSize="16" FontWeight="SemiBold" Margin="0,5,0,0"/>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </Grid>
+</Window>
