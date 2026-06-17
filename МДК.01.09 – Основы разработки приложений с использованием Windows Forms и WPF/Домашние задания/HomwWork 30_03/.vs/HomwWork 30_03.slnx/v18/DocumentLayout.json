@@ -1,0 +1,99 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\\u042F\\source\\repos\\HomwWork 30_03\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{883B1BAD-57AD-BB70-16E5-3A8622E76EDC}|HomwWork 30_03\\HomwWork 30_03.csproj|c:\\users\\\u044F\\source\\repos\\homwwork 30_03\\homwwork 30_03\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{883B1BAD-57AD-BB70-16E5-3A8622E76EDC}|HomwWork 30_03\\HomwWork 30_03.csproj|solutionrelative:homwwork 30_03\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{883B1BAD-57AD-BB70-16E5-3A8622E76EDC}|HomwWork 30_03\\HomwWork 30_03.csproj|c:\\users\\\u044F\\source\\repos\\homwwork 30_03\\homwwork 30_03\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{883B1BAD-57AD-BB70-16E5-3A8622E76EDC}|HomwWork 30_03\\HomwWork 30_03.csproj|solutionrelative:homwwork 30_03\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{883B1BAD-57AD-BB70-16E5-3A8622E76EDC}|HomwWork 30_03\\HomwWork 30_03.csproj|c:\\users\\\u044F\\source\\repos\\homwwork 30_03\\homwwork 30_03\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{883B1BAD-57AD-BB70-16E5-3A8622E76EDC}|HomwWork 30_03\\HomwWork 30_03.csproj|solutionrelative:homwwork 30_03\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3F8625A1-88B1-4468-B957-CDF57EF05981}|HomwWork 30_03\\HomwWork 30_03.csproj|C:\\Users\\\u042F\\source\\repos\\HomwWork 30_03\\homwwork 30_03\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{3F8625A1-88B1-4468-B957-CDF57EF05981}|HomwWork 30_03\\HomwWork 30_03.csproj|solutionrelative:homwwork 30_03\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 1799,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 309,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form1.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\\u042F\\source\\repos\\HomwWork 30_03\\HomwWork 30_03\\Form1.Designer.cs",
+              "RelativeDocumentMoniker": "HomwWork 30_03\\Form1.Designer.cs",
+              "ToolTip": "C:\\Users\\\u042F\\source\\repos\\HomwWork 30_03\\HomwWork 30_03\\Form1.Designer.cs",
+              "RelativeToolTip": "HomwWork 30_03\\Form1.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-17T19:35:59.835Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\\u042F\\source\\repos\\HomwWork 30_03\\HomwWork 30_03\\Form1.cs",
+              "RelativeDocumentMoniker": "HomwWork 30_03\\Form1.cs",
+              "ToolTip": "C:\\Users\\\u042F\\source\\repos\\HomwWork 30_03\\HomwWork 30_03\\Form1.cs",
+              "RelativeToolTip": "HomwWork 30_03\\Form1.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAMwB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-17T19:35:53.96Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "C:\\Users\\\u042F\\source\\repos\\HomwWork 30_03\\HomwWork 30_03\\Form1.cs",
+              "RelativeDocumentMoniker": "HomwWork 30_03\\Form1.cs",
+              "ToolTip": "C:\\Users\\\u042F\\source\\repos\\HomwWork 30_03\\HomwWork 30_03\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "HomwWork 30_03\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-17T19:34:10.683Z",
+              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "C:\\Users\\\u042F\\source\\repos\\HomwWork 30_03\\HomwWork 30_03\\Form1.cs",
+              "RelativeDocumentMoniker": "HomwWork 30_03\\Form1.cs",
+              "ToolTip": "C:\\Users\\\u042F\\source\\repos\\HomwWork 30_03\\HomwWork 30_03\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]*",
+              "RelativeToolTip": "HomwWork 30_03\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-17T19:22:58.887Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
