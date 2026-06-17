@@ -1,0 +1,29 @@
+C:\C#_NET\windows_forms_foundation\homeworks\credit_calculation\credit_calculation\obj\Debug\credit_calculation.csproj.AssemblyReference.cache
+C:\C#_NET\windows_forms_foundation\homeworks\credit_calculation\credit_calculation\obj\Debug\MainWindow.g.cs
+C:\C#_NET\windows_forms_foundation\homeworks\credit_calculation\credit_calculation\obj\Debug\App.g.cs
+C:\C#_NET\windows_forms_foundation\homeworks\credit_calculation\credit_calculation\obj\Debug\credit_calculation_MarkupCompile.cache
+C:\C#_NET\windows_forms_foundation\homeworks\credit_calculation\credit_calculation\obj\Debug\credit_calculation_MarkupCompile.lref
+C:\C#_NET\windows_forms_foundation\homeworks\credit_calculation\credit_calculation\bin\Debug\credit_calculation.exe.config
+C:\C#_NET\windows_forms_foundation\homeworks\credit_calculation\credit_calculation\bin\Debug\credit_calculation.exe
+C:\C#_NET\windows_forms_foundation\homeworks\credit_calculation\credit_calculation\bin\Debug\credit_calculation.pdb
+C:\C#_NET\windows_forms_foundation\homeworks\credit_calculation\credit_calculation\obj\Debug\MainWindow.baml
+C:\C#_NET\windows_forms_foundation\homeworks\credit_calculation\credit_calculation\obj\Debug\credit_calculation.g.resources
+C:\C#_NET\windows_forms_foundation\homeworks\credit_calculation\credit_calculation\obj\Debug\credit_calculation.Properties.Resources.resources
+C:\C#_NET\windows_forms_foundation\homeworks\credit_calculation\credit_calculation\obj\Debug\credit_calculation.csproj.GenerateResource.cache
+C:\C#_NET\windows_forms_foundation\homeworks\credit_calculation\credit_calculation\obj\Debug\credit_calculation.csproj.CoreCompileInputs.cache
+C:\C#_NET\windows_forms_foundation\homeworks\credit_calculation\credit_calculation\obj\Debug\credit_calculation.exe
+C:\C#_NET\windows_forms_foundation\homeworks\credit_calculation\credit_calculation\obj\Debug\credit_calculation.pdb
+C:\Users\Я\Desktop\HomeWork-main\МДК.01.08 – Платформа Microsoft .NET и язык программирования C#\Домашние задания\windows_presentation_foundation\credit_calculation\credit_calculation\bin\Debug\credit_calculation.exe.config
+C:\Users\Я\Desktop\HomeWork-main\МДК.01.08 – Платформа Microsoft .NET и язык программирования C#\Домашние задания\windows_presentation_foundation\credit_calculation\credit_calculation\bin\Debug\credit_calculation.exe
+C:\Users\Я\Desktop\HomeWork-main\МДК.01.08 – Платформа Microsoft .NET и язык программирования C#\Домашние задания\windows_presentation_foundation\credit_calculation\credit_calculation\bin\Debug\credit_calculation.pdb
+C:\Users\Я\Desktop\HomeWork-main\МДК.01.08 – Платформа Microsoft .NET и язык программирования C#\Домашние задания\windows_presentation_foundation\credit_calculation\credit_calculation\obj\Debug\credit_calculation.csproj.AssemblyReference.cache
+C:\Users\Я\Desktop\HomeWork-main\МДК.01.08 – Платформа Microsoft .NET и язык программирования C#\Домашние задания\windows_presentation_foundation\credit_calculation\credit_calculation\obj\Debug\MainWindow.g.cs
+C:\Users\Я\Desktop\HomeWork-main\МДК.01.08 – Платформа Microsoft .NET и язык программирования C#\Домашние задания\windows_presentation_foundation\credit_calculation\credit_calculation\obj\Debug\App.g.cs
+C:\Users\Я\Desktop\HomeWork-main\МДК.01.08 – Платформа Microsoft .NET и язык программирования C#\Домашние задания\windows_presentation_foundation\credit_calculation\credit_calculation\obj\Debug\credit_calculation_MarkupCompile.cache
+C:\Users\Я\Desktop\HomeWork-main\МДК.01.08 – Платформа Microsoft .NET и язык программирования C#\Домашние задания\windows_presentation_foundation\credit_calculation\credit_calculation\obj\Debug\MainWindow.baml
+C:\Users\Я\Desktop\HomeWork-main\МДК.01.08 – Платформа Microsoft .NET и язык программирования C#\Домашние задания\windows_presentation_foundation\credit_calculation\credit_calculation\obj\Debug\credit_calculation.g.resources
+C:\Users\Я\Desktop\HomeWork-main\МДК.01.08 – Платформа Microsoft .NET и язык программирования C#\Домашние задания\windows_presentation_foundation\credit_calculation\credit_calculation\obj\Debug\credit_calculation.Properties.Resources.resources
+C:\Users\Я\Desktop\HomeWork-main\МДК.01.08 – Платформа Microsoft .NET и язык программирования C#\Домашние задания\windows_presentation_foundation\credit_calculation\credit_calculation\obj\Debug\credit_calculation.csproj.GenerateResource.cache
+C:\Users\Я\Desktop\HomeWork-main\МДК.01.08 – Платформа Microsoft .NET и язык программирования C#\Домашние задания\windows_presentation_foundation\credit_calculation\credit_calculation\obj\Debug\credit_calculation.csproj.CoreCompileInputs.cache
+C:\Users\Я\Desktop\HomeWork-main\МДК.01.08 – Платформа Microsoft .NET и язык программирования C#\Домашние задания\windows_presentation_foundation\credit_calculation\credit_calculation\obj\Debug\credit_calculation.exe
+C:\Users\Я\Desktop\HomeWork-main\МДК.01.08 – Платформа Microsoft .NET и язык программирования C#\Домашние задания\windows_presentation_foundation\credit_calculation\credit_calculation\obj\Debug\credit_calculation.pdb
