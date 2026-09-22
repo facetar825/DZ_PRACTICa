@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Расписание на день</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="container">
+        <header>
+            <p class="label">УЧЕБНАЯ НЕДЕЛЯ · 3 КУРС</p>
+            <h1>Расписание на день</h1>
+            <p class="subtitle">Выберите день, чтобы посмотреть занятия.</p>
+        </header>
+
+        <div class="week">
+            <span>Текущая неделя</span>
+            <strong>{{ dates[0].strftime('%d.%m') }} — {{ dates[4].strftime('%d.%m.%Y') }}</strong>
+        </div>
+
+        <form class="days" method="get" aria-label="Выбор дня недели">
+            {% for short, full in days %}
+            <button type="submit" name="day" value="{{ loop.index0 }}"
+                    class="day{% if loop.index0 == selected %} active{% endif %}"
+                    aria-label="{{ full }}" aria-pressed="{{ 'true' if loop.index0 == selected else 'false' }}">
+                <span>{{ short }}</span>
+                <small>{{ dates[loop.index0].strftime('%d.%m') }}</small>
+            </button>
+            {% endfor %}
+        </form>
+
+        <section class="schedule" aria-labelledby="day-title">
+            <div class="schedule-heading">
+                <div>
+                    <p class="label">{% if dates[selected] == today %}СЕГОДНЯ{% else %}ЗАНЯТИЯ НА ДЕНЬ{% endif %}</p>
+                    <h2 id="day-title">{{ days[selected][1] }}</h2>
+                </div>
+                <span class="count">Занятий: {{ lessons|length }}</span>
+            </div>
+
+            <ol class="lessons">
+                {% for time, subject, room in lessons %}
+                <li class="lesson">
+                    <span class="number">{{ loop.index }}</span>
+                    <div class="lesson-info">
+                        <p class="time">{{ time }}</p>
+                        <h3>{{ subject }}</h3>
+                        <p class="room">Аудитория: {{ room }}</p>
+                    </div>
+                </li>
+                {% else %}
+                <li class="empty">В этот день занятий нет.</li>
+                {% endfor %}
+            </ol>
+        </section>
+        <footer>Учебный пример расписания · Домашнее задание от 07.09.2026</footer>
+    </main>
+</body>
+</html>
+
