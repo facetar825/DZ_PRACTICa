@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Главная — Счётчик посещений{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <p class="eyebrow">СТАТИСТИКА ПОСЕЩЕНИЙ</p>
+
+        <h1>Вы зашли на эту страницу</h1>
+
+        <div class="counter">
+            <span class="counter-value">{{ count }}</span>
+            <span class="counter-label">
+                {% if count == 1 %}раз{% elif count < 5 %}раза{% else %}раз{% endif %}
+            </span>
+        </div>
+
+        <p class="muted">
+            Обновите страницу (F5) — число увеличится.<br>
+            Закройте и откройте браузер — счётчик сохранится, потому что он в сессии.
+        </p>
+
+        <form action="/reset" method="POST">
+            <button type="submit" class="btn-danger">Сбросить счётчик</button>
+        </form>
+    </div>
+{% endblock %}
