@@ -1,0 +1,44 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: 'Segoe UI', Arial, sans-serif; background: #f3f5fa; color: #202d45; }
+.container { max-width: 830px; margin: 36px auto; padding: 0 20px; }
+.brand { display: flex; align-items: center; gap: 12px; font-size: 14px; font-weight: 600; margin-bottom: 30px; }
+.brand span { display: grid; place-items: center; background: #465bc9; color: white; border-radius: 10px; width: 34px; height: 34px; }
+.card { background: white; border: 1px solid #e0e5ef; border-radius: 20px; padding: 28px; box-shadow: 0 10px 35px #1e335507; }
+.auth { max-width: 480px; margin: auto; }
+h1 { font-size: clamp(26px, 5vw, 34px); letter-spacing: -0.8px; margin: 0; }
+h2 { font-size: 24px; margin: 0; }
+h3 { font-size: 16px; margin: 5px 0 8px; line-height: 1.5; }
+.eyebrow { color: #56679b; font-size: 11px; letter-spacing: 1px; font-weight: 700; margin: 0 0 10px; }
+.muted { color: #66748a; line-height: 1.6; font-size: 14px; }
+.auth-form { display: flex; flex-direction: column; gap: 8px; margin-top: 24px; }
+label { font-size: 13px; font-weight: 600; margin-top: 8px; }
+input, select { width: 100%; padding: 12px; border: 1px solid #ced6e4; border-radius: 9px; background: #fff; color: #202d45; font: inherit; }
+button { font: inherit; cursor: pointer; }
+.primary { background: #465bc9; color: white; padding: 13px; border: 0; border-radius: 10px; margin-top: 14px; font-weight: 600; }
+.primary:hover { background: #3549ae; }
+input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible { outline: 3px solid #8495e8; outline-offset: 3px; }
+a { color: #3e53bf; }
+.auth-link { text-align: center; font-size: 13px; margin-top: 24px; line-height: 1.8; }
+.message { background: #e8edff; padding: 14px 18px; border-radius: 10px; color: #344787; font-size: 14px; }
+.profile, .heading { display: flex; justify-content: space-between; align-items: center; gap: 14px; }
+.logout { padding: 9px 15px; border: 1px solid #ced6e4; background: white; border-radius: 9px; color: #405073; }
+.days { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin: 24px 0; }
+.day { padding: 15px 5px; background: white; border: 1px solid #d8dfeb; border-radius: 12px; color: #42516d; }
+.day strong, .day small { display: block; }
+.day strong { margin-bottom: 5px; font-size: 17px; }
+.day.active { background: #465bc9; border-color: #465bc9; color: white; }
+.day:hover { box-shadow: 0 0 0 2px #8495e8; }
+.badge { font-size: 12px; padding: 8px 12px; background: #eef1fa; border-radius: 20px; }
+.lessons { list-style: none; margin: 22px 0 0; padding: 0; }
+.lessons li { display: flex; gap: 18px; border-top: 1px solid #ebeff5; padding: 22px 0; }
+.number { background: #eef1fa; color: #56679b; display: grid; place-items: center; min-width: 35px; height: 35px; border-radius: 9px; font-size: 13px; }
+.time { margin: 0; color: #5368b1; font-weight: 600; font-size: 13px; }
+.room { margin: 0; font-size: 12px; }
+footer, .example { text-align: center; color: #738097; font-size: 12px; line-height: 1.8; margin-top: 24px; }
+@media (max-width: 520px) {
+    .container { padding: 0 14px; margin: 24px auto; }
+    .card { padding: 22px 18px; }
+    .profile { align-items: flex-start; flex-direction: column; }
+    .days { gap: 7px; }
+    .heading { align-items: flex-start; flex-direction: column; }
+}

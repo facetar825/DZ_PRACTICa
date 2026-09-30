@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Регистрация · Расписание колледжа{% endblock %}
+{% block content %}
+<section class="card auth">
+    <p class="eyebrow">АККАУНТ СТУДЕНТА</p>
+    <h1>Регистрация</h1>
+    <p class="muted">Укажите свою группу — мы покажем её расписание.</p>
+    <form method="post" class="auth-form">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+        <label for="name">Имя студента</label>
+        <input id="name" name="name" autocomplete="name" minlength="2" maxlength="80" required value="{{ request.form.get('name', '') }}">
+        <label for="login">Логин</label>
+        <input id="login" name="login" autocomplete="username" minlength="3" maxlength="30" required value="{{ request.form.get('login', '') }}">
+        <label for="group">Группа</label>
+        <select id="group" name="group" required>
+            <option value="">Выберите группу</option>
+            {% for group in groups %}
+            <option value="{{ group }}" {% if request.form.get('group') == group %}selected{% endif %}>{{ group }}</option>
+            {% endfor %}
+        </select>
+        <label for="password">Пароль</label>
+        <input id="password" name="password" type="password" autocomplete="new-password" minlength="6" maxlength="128" required>
+        <small class="muted">Не менее 6 символов</small>
+        <label for="confirm">Повторите пароль</label>
+        <input id="confirm" name="confirm_password" type="password" autocomplete="new-password" minlength="6" maxlength="128" required>
+        <button class="primary" type="submit">Создать аккаунт</button>
+    </form>
+    <p class="auth-link">Уже зарегистрированы? <a href="{{ url_for('login') }}">Войти</a></p>
+</section>
+{% endblock %}

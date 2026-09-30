@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<header class="profile">
+    <div><p class="eyebrow">{{ user.name }} · {{ user.group }}</p><h1>Расписание колледжа</h1></div>
+    <form action="{{ url_for('logout') }}" method="post">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+        <button class="logout" type="submit">Выйти</button>
+    </form>
+</header>
+<p class="muted">Текущая неделя: {{ dates[0].strftime('%d.%m') }} — {{ dates[4].strftime('%d.%m.%Y') }}</p>
+<form class="days" method="get" aria-label="Дни недели">
+    {% for day in short_days %}
+    <button type="submit" name="day" value="{{ loop.index0 }}" class="day {% if selected == loop.index0 %}active{% endif %}" aria-pressed="{{ 'true' if selected == loop.index0 else 'false' }}" aria-label="{{ days[loop.index0] }}">
+        <strong>{{ day }}</strong><small>{{ dates[loop.index0].strftime('%d.%m') }}</small>
+    </button>
+    {% endfor %}
+</form>
+<section class="card">
+    <div class="heading"><h2>{{ days[selected] }}</h2><span class="badge">{{ user.group }}</span></div>
+    <ol class="lessons">
+        {% for time, subject, room in lessons %}
+        <li><span class="number">{{ loop.index }}</span><div><p class="time">{{ time }}</p><h3>{{ subject }}</h3><p class="muted room">Аудитория: {{ room }}</p></div></li>
+        {% else %}
+        <li>Занятий нет.</li>
+        {% endfor %}
+    </ol>
+</section>
+<p class="example">Расписание заполнено учебными примерами.</p>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Вход · Расписание колледжа{% endblock %}
+{% block content %}
+<section class="card auth">
+    <p class="eyebrow">РАСПИСАНИЕ КОЛЛЕДЖА</p>
+    <h1>С возвращением</h1>
+    <p class="muted">Войдите, чтобы увидеть занятия своей группы.</p>
+    <form method="post" class="auth-form">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+        <label for="login">Логин</label>
+        <input id="login" name="login" autocomplete="username" maxlength="30" required value="{{ request.form.get('login', '') }}">
+        <label for="password">Пароль</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" maxlength="128" required>
+        <button class="primary" type="submit">Войти в аккаунт</button>
+    </form>
+    <p class="auth-link">Нет аккаунта? <a href="{{ url_for('register') }}">Зарегистрироваться</a></p>
+</section>
+{% endblock %}

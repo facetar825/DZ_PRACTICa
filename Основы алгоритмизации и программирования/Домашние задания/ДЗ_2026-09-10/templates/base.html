@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Расписание колледжа{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="container">
+        <div class="brand"><span>К</span> Колледж · Личный кабинет</div>
+        {% for message in get_flashed_messages() %}
+        <p class="message" role="status">{{ message }}</p>
+        {% endfor %}
+        {% block content %}{% endblock %}
+        <footer>Учебное приложение · 3 курс · Домашнее задание от 10.09.2026</footer>
+    </main>
+</body>
+</html>
