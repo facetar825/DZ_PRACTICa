@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}Корзина{% endblock %}
+
+{% block content %}
+    <div class="page-head">
+        <h1>Корзина</h1>
+        <a href="/" class="back-link">← Продолжить покупки</a>
+    </div>
+
+    {% if cart_items %}
+        {# --- ТАБЛИЦА ТОВАРОВ --- #}
+        <div class="cart-table">
+            <div class="cart-header">
+                <span>Товар</span>
+                <span>Цена</span>
+                <span>Кол-во</span>
+                <span>Сумма</span>
+                <span></span>
+            </div>
+
+            {% for item in cart_items %}
+                <div class="cart-row">
+                    <div>
+                        <strong>{{ item.product.name }}</strong>
+                        <small class="muted">{{ item.product.category }}</small>
+                    </div>
+                    <div>{{ item.product.price }} ₽</div>
+                    <div>{{ item.quantity }} шт.</div>
+                    <div><strong>{{ item.subtotal }} ₽</strong></div>
+                    <div>
+                        {# Кнопка удаления позиции целиком #}
+                        <form action="/remove/{{ item.product.id }}" method="POST">
+                            <button type="submit" class="btn-remove" title="Удалить позицию">✕</button>
+                        </form>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        {# --- СТАТИСТИКА --- #}
+        <div class="stats-box">
+            <h2>Статистика корзины</h2>
+            <div class="stats-grid">
+                <div class="stat">
+                    <p class="stat-label">Всего товаров</p>
+                    <p class="stat-value">{{ stats.total_items }}</p>
+                </div>
+                <div class="stat">
+                    <p class="stat-label">Уникальных позиций</p>
+                    <p class="stat-value">{{ stats.unique_items }}</p>
+                </div>
+                <div class="stat">
+                    <p class="stat-label">Итоговая сумма</p>
+                    <p class="stat-value">{{ stats.total_price }} ₽</p>
+                </div>
+            </div>
+
+            {# Кнопка очистки корзины с подтверждением #}
+            <form action="/clear" method="POST" onsubmit="return confirm('Вы уверены, что хотите очистить корзину?');">
+                <button type="submit" class="btn-danger">Очистить корзину</button>
+            </form>
+        </div>
+
+    {% else %}
+        {# --- ПУСТАЯ КОРЗИНА --- #}
+        <div class="empty-cart">
+            <p class="empty-icon">🛒</p>
+            <h2>Ваша корзина пуста</h2>
+            <p class="muted">Добавьте товары из каталога, чтобы они появились здесь.</p>
+            <a href="/" class="primary" style="display:inline-block; text-decoration:none; margin-top:20px;">
+                Перейти в каталог
+            </a>
+        </div>
+    {% endif %}
+{% endblock %}

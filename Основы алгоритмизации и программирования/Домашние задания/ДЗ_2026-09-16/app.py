@@ -83,7 +83,7 @@ def weather():
         "request_time": datetime.now().strftime("%d.%m.%Y %H:%M:%S")
     }
 
-    return render_template('result.html', weather=result)
+    return render_template('cart.html', weather=result)
 
 
 if __name__ == '__main__':

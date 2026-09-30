@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Каталог товаров{% endblock %}
+
+{% block content %}
+    <div class="page-head">
+        <h1>Каталог товаров</h1>
+        <p class="muted">Всего позиций: {{ products|length }}</p>
+    </div>
+
+    <div class="product-grid">
+        {% for product in products %}
+            <div class="product-card">
+                <span class="category-badge">{{ product.category }}</span>
+                <h2>{{ product.name }}</h2>
+                <p class="price">{{ product.price }} ₽</p>
+
+                {# Форма для добавления в корзину (метод POST) #}
+                <form action="/add/{{ product.id }}" method="POST">
+                    <button type="submit" class="primary">Добавить в корзину</button>
+                </form>
+
+                {# Показываем, если товар уже в корзине #}
+                {% set cart = session.get('cart', {}) %}
+                {% if product.id|string in cart %}
+                    <p class="in-cart">
+                        ✓ В корзине: {{ cart[product.id|string] }} шт.
+                    </p>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
