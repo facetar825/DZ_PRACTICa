@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Блок title: дочерние шаблоны могут его переопределить -->
+    <title>{% block title %}Каталог фильмов{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <!-- Шапка сайта -->
+    <header class="header">
+        <div class="container header-inner">
+            <a href="/" class="logo">🎬 Кинотека</a>
+            <nav>
+                <a href="/">Главная</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Основной контент: сюда будут вставляться дочерние шаблоны -->
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2024 Кинотека. Учебный проект на Flask + Jinja2.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

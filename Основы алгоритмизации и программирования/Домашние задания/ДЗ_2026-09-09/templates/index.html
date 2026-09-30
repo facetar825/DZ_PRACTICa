@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Каталог фильмов — Кинотека{% endblock %}
+
+{% block content %}
+    <h1 class="page-title">Каталог фильмов</h1>
+    <p class="subtitle">Всего фильмов: {{ movies|length }}</p>
+
+    {# Проверяем, есть ли фильмы #}
+    {% if movies %}
+        <div class="movie-grid">
+            {# Цикл по фильмам #}
+            {% for movie in movies %}
+                <a href="/movie/{{ movie.id }}" class="movie-card">
+                    <div class="movie-number">#{{ loop.index }}</div>
+
+                    <h2 class="movie-title">{{ movie.title }}</h2>
+
+                    <p class="movie-meta">
+                        {{ movie.year }} • {{ movie.genre }}
+                    </p>
+
+                    <p class="movie-rating">
+                        ⭐ {{ movie.rating }}
+
+                        {# Условие: если рейтинг >= 8.5 — показываем "Топ" #}
+                        {% if movie.rating >= 8.5 %}
+                            <span class="badge-top">Топ</span>
+                        {% endif %}
+                    </p>
+                </a>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="empty">
+            <p>😢 Каталог пуст</p>
+        </div>
+    {% endif %}
+{% endblock %}

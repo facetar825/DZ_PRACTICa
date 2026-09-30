@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}{{ movie.title }} — Кинотека{% endblock %}
+
+{% block content %}
+    <a href="/" class="back-link">← Назад в каталог</a>
+
+    <article class="movie-detail">
+        <h1>{{ movie.title|upper }}</h1>
+
+        <div class="detail-meta">
+            <span>📅 {{ movie.year }}</span>
+            <span>🎭 {{ movie.genre }}</span>
+            <span>⭐ {{ movie.rating|round(1) }}</span>
+
+            {% if movie.rating >= 8.5 %}
+                <span class="badge-top">Топ</span>
+            {% endif %}
+        </div>
+
+        <p class="detail-description">
+            {{ movie.description|default("Описание пока не добавлено.", true) }}
+        </p>
+
+        {# Фильтр truncate: обрезает текст до 100 символов #}
+        <p class="detail-short">
+            Кратко: {{ movie.description|truncate(100, true, '…') }}
+        </p>
+    </article>
+{% endblock %}
