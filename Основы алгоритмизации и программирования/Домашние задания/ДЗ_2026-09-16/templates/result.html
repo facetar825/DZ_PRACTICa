@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Погода в {{ weather.city }}{% endblock %}
+
+{% block content %}
+    <a href="/" class="back-link">← Назад к поиску</a>
+
+    <div class="card">
+        <p class="eyebrow">РЕЗУЛЬТАТ ЗАПРОСА</p>
+        
+        <h1>{{ weather.city }}</h1>
+        <p class="muted">🌍 {{ weather.country }}</p>
+
+        <!-- Большая температура -->
+        <div class="temp-block">
+            <span class="temp-value">{{ weather.temperature }}</span>
+            <span class="temp-unit">°C</span>
+        </div>
+
+        <!-- Детали -->
+        <div class="details">
+            <div class="detail-item">
+                <span class="detail-icon">💨</span>
+                <div>
+                    <p class="detail-label">Скорость ветра</p>
+                    <p class="detail-value">{{ weather.wind_speed }} км/ч</p>
+                </div>
+            </div>
+
+            <div class="detail-item">
+                <span class="detail-icon">💧</span>
+                <div>
+                    <p class="detail-label">Влажность</p>
+                    <p class="detail-value">{{ weather.humidity }} %</p>
+                </div>
+            </div>
+
+            <div class="detail-item">
+                <span class="detail-icon">🕐</span>
+                <div>
+                    <p class="detail-label">Время запроса</p>
+                    <p class="detail-value">{{ weather.request_time }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

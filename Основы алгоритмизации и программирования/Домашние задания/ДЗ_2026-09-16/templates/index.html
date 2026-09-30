@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Погода — Главная{% endblock %}
+
+{% block content %}
+    <div class="card auth">
+        <p class="eyebrow">ПОИСК ПОГОДЫ</p>
+        <h1>Узнайте погоду в любом городе</h1>
+        <p class="muted">Введите название города, и мы покажем текущую температуру, ветер и влажность.</p>
+
+        <!-- Форма: метод POST, отправляется на /weather -->
+        <form action="/weather" method="POST" class="weather-form">
+            <label for="city">Название города</label>
+            <input 
+                type="text" 
+                id="city" 
+                name="city" 
+                placeholder="Например: Москва" 
+                required
+                autofocus
+            >
+            <button type="submit" class="primary">Узнать погоду</button>
+        </form>
+    </div>
+{% endblock %}
