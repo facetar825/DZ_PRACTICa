@@ -1,18 +1,6 @@
-/*
-    Лабораторная работа. Комплексная работа с MS SQL Server
-    Студент: Мингазов Ахнаф
-    Выполнять целиком в SSMS в базе CollegeDB (SQL Server 2016 SP1+).
-    Нужны готовые college.groups, college.students, college.grades.
-    Если базы нет, сначала выполните 00_Учебная_база.sql.
-    Рейтинг строится по students.average_grade; среднее по grades
-    вычисляется отдельно в задании 1. Это разные показатели.
-*/
-USE CollegeDB;
+﻿USE CollegeDB;
 GO
 
--- Задание 1. Аналитический запрос
--- LEFT JOIN сохраняет студентов без оценок; COUNT(gr.id) даёт для них 0.
--- AVG игнорирует NULL, поэтому отсутствие оценок не превращается в ноль.
 SELECT s.name AS student_name,
        g.name AS group_name,
        s.average_grade,
@@ -25,8 +13,6 @@ GROUP BY s.id, s.name, g.name, s.average_grade
 ORDER BY s.name, s.id;
 GO
 
--- Задание 2. CTE и общий рейтинг
--- RANK присваивает равные места одинаковым баллам и оставляет пропуски.
 ;WITH StudentStatistics AS
 (
     SELECT id, name, group_id, average_grade
@@ -38,7 +24,6 @@ FROM StudentStatistics
 ORDER BY rating, name, id;
 GO
 
--- Задание 3. Рейтинг внутри группы
 ;WITH StudentStatistics AS
 (
     SELECT id, name, group_id, average_grade
@@ -54,7 +39,6 @@ LEFT JOIN college.groups AS g ON g.id = s.group_id
 ORDER BY g.name, group_rating, s.name, s.id;
 GO
 
--- Задание 4. Представление
 CREATE OR ALTER VIEW college.StudentRating
 AS
     SELECT s.id, s.name, g.name AS group_name, s.average_grade,
@@ -72,7 +56,6 @@ WHERE group_name = N'ИС-31'
 ORDER BY group_rating, id;
 GO
 
--- Задание 5. Хранимая процедура
 CREATE OR ALTER PROCEDURE college.GetStudentsByMinGrade
     @min_grade DECIMAL(10, 4)
 AS
@@ -89,7 +72,6 @@ EXEC college.GetStudentsByMinGrade @min_grade = 4.5;
 EXEC college.GetStudentsByMinGrade @min_grade = 3.5;
 GO
 
--- Задание 6. Скалярная пользовательская функция
 CREATE OR ALTER FUNCTION college.GetStudentStatus
 (
     @average_grade DECIMAL(10, 4)
@@ -111,14 +93,12 @@ SELECT name, average_grade,
 FROM college.students
 ORDER BY id;
 
--- Проверка порогов: 3.49 / 3.50 / 4.49 / 4.50 и NULL.
 SELECT v.average_grade,
        college.GetStudentStatus(v.average_grade) AS status
 FROM (VALUES (CAST(3.49 AS DECIMAL(10, 4))), (3.50), (4.49), (4.50), (NULL))
     AS v(average_grade);
 GO
 
--- Задание 7. Inline Table-Valued Function
 CREATE OR ALTER FUNCTION college.GetStudentsByGroup
 (
     @group_id INT
@@ -139,7 +119,6 @@ WHERE average_grade >= 4.5
 ORDER BY average_grade DESC, id;
 GO
 
--- Задание 8. Таблица и триггер аудита
 IF OBJECT_ID(N'college.student_changes', N'U') IS NULL
 BEGIN
     CREATE TABLE college.student_changes
@@ -162,8 +141,6 @@ BEGIN
     SET NOCOUNT ON;
     IF NOT UPDATE(average_grade) RETURN;
 
-    -- Множества inserted/deleted содержат ВСЕ строки одного UPDATE.
-    -- Сравнение исключает запись аудита при присваивании прежнего балла.
     INSERT INTO college.student_changes
         (student_id, old_average_grade, new_average_grade, change_date)
     SELECT i.id, d.average_grade, i.average_grade, SYSDATETIME()
@@ -175,10 +152,6 @@ BEGIN
 END;
 GO
 
--- Проверка триггера: изменения и аудит видны внутри транзакции.
--- Затем ROLLBACK возвращает исходные баллы и удаляет тестовые записи.
--- Значения IDENTITY могут иметь пропуски после отката, это нормально.
--- Для проверки +0.1 у тестовых студентов должен быть запас до верхней границы.
 SET XACT_ABORT ON;
 BEGIN TRY
     BEGIN TRANSACTION;
@@ -194,7 +167,6 @@ BEGIN TRY
 
     SELECT * FROM college.student_changes ORDER BY id;
 
-    -- Присваивание того же значения не должно добавлять записи.
     DECLARE @before_count INT = (SELECT COUNT(*) FROM college.student_changes);
     UPDATE college.students
     SET average_grade = average_grade
@@ -211,8 +183,6 @@ BEGIN CATCH
 END CATCH;
 GO
 
--- Итоговое задание. Представление уже содержит оконный рейтинг.
--- Оценки агрегируем отдельно, чтобы JOIN не дублировал строки студентов.
 ;WITH GradeCounts AS
 (
     SELECT student_id, COUNT(*) AS grades_count
