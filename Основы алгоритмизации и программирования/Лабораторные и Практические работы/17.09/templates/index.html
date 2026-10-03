@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="heading"><div><span class="eyebrow">ЛИЧНЫЙ ПЛАН</span><h1>Ваши задачи</h1><p>Всё, что нужно сделать, в одном месте.</p></div><a class="button" href="{{ url_for('add') }}">+ Добавить задачу</a></div>
+<div class="stats"><div><span>Всего задач</span><b>{{ stats.total }}</b></div><div><span>Выполнено</span><b class="green">{{ stats.done }}</b></div><div><span>Осталось сделать</span><b>{{ stats.total - stats.done }}</b></div></div>
+<form class="filters" method="get"><div><label for="category">Категория</label><select name="category" id="category"><option value="">Все категории</option>{% for item in categories %}<option value="{{ item }}" {% if item == category %}selected{% endif %}>{{ item }}</option>{% endfor %}</select></div><div><label for="sort">Сортировка</label><select name="sort" id="sort"><option value="newest" {% if sort == 'newest' %}selected{% endif %}>Сначала новые</option><option value="unfinished" {% if sort == 'unfinished' %}selected{% endif %}>Сначала невыполненные</option><option value="finished" {% if sort == 'finished' %}selected{% endif %}>Сначала выполненные</option></select></div><button class="button secondary">Применить</button>{% if category or sort != 'newest' %}<a class="reset" href="{{ url_for('index') }}">Сбросить</a>{% endif %}</form>
+<div class="list-heading"><h2>Список задач</h2><span>{{ tasks|length }} в списке</span></div>
+<section class="task-list">
+{% for task in tasks %}
+<article class="task {% if task.done %}completed{% endif %}">
+<form method="post" action="{{ url_for('toggle', task_id=task.id) }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><input type="hidden" name="filter_category" value="{{ category }}"><input type="hidden" name="sort" value="{{ sort }}"><button class="check" aria-label="{% if task.done %}Вернуть в работу{% else %}Отметить выполненной{% endif %}: {{ task.title }}">{% if task.done %}✓{% else %}<span></span>{% endif %}</button></form>
+<div class="task-content"><div class="task-meta"><span class="tag">{{ task.category }}</span><span class="status">{% if task.done %}Выполнена{% else %}В работе{% endif %}</span></div><h3>{{ task.title }}</h3>{% if task.description %}<p class="description">{{ task.description }}</p>{% endif %}</div>
+<div class="actions"><a href="{{ url_for('edit', task_id=task.id) }}">Изменить</a><form method="post" action="{{ url_for('delete', task_id=task.id) }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><input type="hidden" name="filter_category" value="{{ category }}"><input type="hidden" name="sort" value="{{ sort }}"><button class="delete">Удалить</button></form></div>
+</article>
+{% else %}<div class="empty"><div class="empty-icon">✓</div><h3>{% if category %}В этой категории нет задач{% else %}Начните с первой задачи{% endif %}</h3><p>{% if category %}Выберите другую категорию или сбросьте фильтр.{% else %}Добавьте задачу и двигайтесь к цели шаг за шагом.{% endif %}</p><a href="{{ url_for('add') }}" class="button">Добавить задачу</a></div>{% endfor %}
+</section>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="intro"><span class="eyebrow">ИНДЕКС МАССЫ ТЕЛА</span><h1>Три числа.<br>Один результат.</h1><p>Введите вес, рост и возраст,<br>чтобы рассчитать свой ИМТ.</p><div class="formula">ИМТ = вес / (рост / 100)²</div></section>
+<section class="card"><h2>Ваши параметры</h2><p class="muted">Заполните все поля</p>
+<form method="post" novalidate>
+  {{ form.hidden_tag() }}
+  {% for error in form.csrf_token.errors %}<p class="error">Форма устарела. Обновите страницу.</p>{% endfor %}
+  {% for field, hint, minimum, maximum, step in [(form.weight, 'От 20 до 300 кг', 20, 300, 'any'), (form.height, 'От 100 до 250 см', 100, 250, 1), (form.age, 'От 1 до 120 лет', 1, 120, 1)] %}
+  <div class="field">{{ field.label }}{{ field(type='number', min=minimum, max=maximum, step=step, placeholder=hint, required=true, aria_describedby=field.id ~ '-hint') }}<small id="{{ field.id }}-hint">{{ hint }}</small>{% for error in field.errors %}<p class="error">{{ error }}</p>{% endfor %}</div>
+  {% endfor %}
+  {{ form.submit(class='button') }}
+</form></section>
+{% endblock %}

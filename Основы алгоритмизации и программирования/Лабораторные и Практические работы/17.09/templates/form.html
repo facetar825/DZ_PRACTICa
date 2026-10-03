@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+<a class="back" href="{{ url_for('index') }}">← К списку задач</a><div class="form-heading"><span class="eyebrow">ВАШ ПЛАН</span><h1>{% if editing %}Изменить задачу{% else %}Новая задача{% endif %}</h1></div>
+<form class="form-card" method="post" novalidate>{{ form.hidden_tag() }}
+{% for field in [form.title, form.description, form.category] %}<div class="field">{{ field.label }}{% if field.name == 'description' %}{{ field(rows=5, placeholder='Детали задачи', maxlength=2000) }}{% elif field.name == 'title' %}{{ field(placeholder='Что нужно сделать?', maxlength=150, required=true) }}{% else %}{{ field(placeholder='Например, Учёба', maxlength=60, required=true) }}{% endif %}{% for error in field.errors %}<p class="error">{{ error }}</p>{% endfor %}</div>{% endfor %}
+<div class="form-actions"><button class="button">{% if editing %}Сохранить изменения{% else %}Добавить задачу{% endif %}</button><a class="reset" href="{{ url_for('index') }}">Отмена</a></div></form>
+{% endblock %}

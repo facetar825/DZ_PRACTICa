@@ -1,0 +1,7 @@
+<!doctype html>
+<html lang="ru">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Менеджер задач</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<body><header><a class="logo" href="{{ url_for('index') }}"><span>✓</span> Порядок</a><span class="date">Практическая работа · 17.09</span></header><main>
+{% for message in get_flashed_messages() %}<div class="notice" role="status">{{ message }}</div>{% endfor %}
+{% block content %}{% endblock %}
+</main></body></html>

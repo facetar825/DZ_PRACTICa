@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="intro"><span class="eyebrow">РАСЧЁТ ГОТОВ</span><h1>Ваш индекс<br>массы тела.</h1><p>Вес {{ result.weight }} кг · рост {{ result.height }} см<br>Возраст: {{ result.age }}</p><div class="formula">ИМТ = {{ result.weight }} / ({{ result.height }} / 100)²</div></section>
+<section class="card result"><span class="muted">ВАШ ИМТ</span><div class="number">{{ result.bmi }}</div><span class="badge {{ result.style }}">{{ result.category }}</span>
+<div class="ranges"><div><span>Недовес</span><b>&lt; 18,5</b></div><div><span>Норма</span><b>18,5 ≤ ИМТ &lt; 25</b></div><div><span>Избыток</span><b>25 ≤ ИМТ ≤ 30</b></div><div><span>Ожирение</span><b>&gt; 30</b></div></div>
+<a class="button" href="{{ url_for('index') }}">Новый расчёт</a></section>
+{% endblock %}
