@@ -1,0 +1,8 @@
+{
+  "server": "(localdb)\\CodexSqlPractice",
+  "coffee_verification_database": "coffee_shop_Check_f1897f9e",
+  "college_verification_database": "CollegeDB_Check_f1897f9e",
+  "status": "passed",
+  "console_scenarios": 16,
+  "complex_runs": 2
+}
