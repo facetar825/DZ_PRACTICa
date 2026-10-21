@@ -1,0 +1,7 @@
+{
+  "status": "passed",
+  "console_scenarios": 9,
+  "server": "(localdb)\\CodexSqlPractice",
+  "verification_database": "Ado678_Check_71626e92",
+  "working_coffee_shop_modified": false
+}
