@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<p class="eyebrow">ТЕЛЕМЕТРИЯ МИССИИ</p>
+<h1>Состояние марсохода</h1>
+<section class="battery panel">
+    <h2>Заряд батареи <span>{{ (battery / 100 * 100)|round|int }}%</span></h2>
+    <progress class="{% if battery < 20 %}red{% elif battery < 50 %}orange{% else %}green{% endif %}"
+              value="{{ battery }}" max="100" aria-label="Заряд батареи"></progress>
+</section>
+<h2 class="section-title">Подсистемы</h2>
+<div class="systems">
+    {% for system in subsystems %}
+    <article class="panel system {{ system.status }}">
+        <h3>{{ system.name }}</h3>
+        <p class="reading">{{ system.value }} <span>{{ system.unit }}</span></p>
+        {% if system.status == "ok" %}
+        <p class="badge">● Норма</p>
+        {% elif system.status == "warning" %}
+        <p class="badge">● Предупреждение</p>
+        {% elif system.status == "critical" %}
+        <p class="badge">⚠ ТРЕБУЕТ ВНИМАНИЯ</p>
+        {% endif %}
+        {% if system.value > 90 %}<p class="heat">🔥 Перегрев</p>{% endif %}
+    </article>
+    {% else %}
+    <p class="panel">Все системы отключены</p>
+    {% endfor %}
+</div>
+{% endblock %}

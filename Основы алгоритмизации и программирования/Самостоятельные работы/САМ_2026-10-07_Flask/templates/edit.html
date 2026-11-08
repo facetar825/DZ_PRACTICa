@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}{{ "Новая задача" if is_new else "Редактирование задачи" }}{% endblock %}
+{% block content %}
+<h1>{{ "Новая задача" if is_new else "Редактирование задачи" }}</h1>
+<form class="editor" method="post">
+    {{ form.hidden_tag() }}
+    {% for message in form.csrf_token.errors %}<p class="error">{{ message }}</p>{% endfor %}
+    {% for field in [form.title, form.description, form.deadline, form.priority] %}
+    <div>
+        {{ field.label }}
+        {{ field() }}
+        {% for message in field.errors %}<p class="error">{{ message }}</p>{% endfor %}
+    </div>
+    {% endfor %}
+    <div class="actions"><button class="primary" type="submit">Сохранить</button><a href="{{ url_for('index') }}">Отмена</a></div>
+</form>
+{% endblock %}

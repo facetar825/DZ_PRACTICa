@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mars Rover · Mission Control</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="site-header"><p><span aria-hidden="true">🔴</span> MARS ROVER · MISSION CONTROL</p></header>
+<main>{% block content %}{% endblock %}</main>
+<footer>Связь: задержка 12 мин</footer>
+</body>
+</html>

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<header class="toolbar">
+    <div><h1>Мои задачи</h1><p>Выполнено {{ grouped.done|length }} из {{ total }}</p></div>
+    <a class="primary" href="{{ url_for('edit') }}">Добавить задачу</a>
+</header>
+{% for key, label in groups.items() %}
+<section class="group {{ key }}">
+    <h2>{{ label }} <small>{{ grouped[key]|length }}</small></h2>
+    {% for task in grouped[key] %}
+    <article class="task">
+        <div>
+            <h3>{{ task.title }}</h3>
+            {% if task.description %}<p class="description">{{ task.description }}</p>{% endif %}
+            <p class="meta">
+                <time datetime="{{ task.deadline.isoformat() }}">{{ task.deadline.strftime('%d.%m.%Y в %H:%M') }}</time>
+                · {{ priorities[task.priority] }} приоритет
+            </p>
+        </div>
+        <div class="actions">
+            <form method="post" action="{{ url_for('set_status', task_id=task.id, done=0 if task.is_done else 1) }}">
+                {{ actions.csrf_token(id=false) }}
+                <button type="submit">{{ "↶ Вернуть" if task.is_done else "✓ Выполнить" }}</button>
+            </form>
+            <a href="{{ url_for('edit', task_id=task.id) }}">Редактировать</a>
+            <form method="post" action="{{ url_for('delete', task_id=task.id) }}">
+                {{ actions.csrf_token(id=false) }}
+                <button type="submit">Удалить</button>
+            </form>
+        </div>
+    </article>
+    {% else %}
+    <p class="meta">Задач нет.</p>
+    {% endfor %}
+</section>
+{% endfor %}
+{% endblock %}

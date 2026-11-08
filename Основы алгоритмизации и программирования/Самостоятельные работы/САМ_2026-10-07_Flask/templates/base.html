@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Список дел{% endblock %}</title>
+    <script>
+        try { document.documentElement.dataset.theme = localStorage.getItem("todo-theme") || "light"; }
+        catch (error) { /* The page still works without browser storage. */ }
+    </script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="site-header">
+    <a href="{{ url_for('index') }}">Список дел</a>
+    <button id="theme-toggle" type="button">Тёмная тема</button>
+</header>
+<main>{% block content %}{% endblock %}</main>
+<script>
+    const root = document.documentElement;
+    const toggle = document.getElementById("theme-toggle");
+    function updateThemeButton() {
+        toggle.setAttribute("aria-pressed", String(root.dataset.theme === "dark"));
+    }
+    toggle.addEventListener("click", () => {
+        root.dataset.theme = root.dataset.theme === "dark" ? "light" : "dark";
+        try { localStorage.setItem("todo-theme", root.dataset.theme); }
+        catch (error) { /* Keep the theme for the current page. */ }
+        updateThemeButton();
+    });
+    updateThemeButton();
+</script>
+</body>
+</html>

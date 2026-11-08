@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Расписание колледжа</title>
+    <style>
+        * { box-sizing:border-box; }
+        body { margin:0; font:16px/1.5 system-ui,sans-serif; color:#172946; background:#edf2fa; }
+        main { max-width:55rem; margin:auto; padding:clamp(1rem,4vw,2rem); }
+        h1,h2,h3,p { margin:0; }
+        h1 { font-size:clamp(1.75rem,5vw,2.8rem); }
+        h2 { font-size:1.3rem; }
+        h3 { font-size:1rem; }
+        .muted { color:#4a5f7c; }
+        form,nav { display:flex; gap:.5rem; flex-wrap:wrap; align-items:center; margin:1rem 0; }
+        select,button,nav a { padding:.5rem .7rem; border:1px solid #b7c6dc; border-radius:.5rem; font:inherit; background:#fff; color:#173764; }
+        button { cursor:pointer; }
+        nav a { text-decoration:none; }
+        nav a[aria-current="true"] { background:#234b9e; color:#fff; border-color:#234b9e; }
+        section { background:#fff; border:1px solid #b7c6dc; border-radius:.9rem; padding:1rem; margin-bottom:1rem; }
+        ol { padding-left:1.7rem; margin:.5rem 0 0; }
+        li { padding:.7rem 0; border-top:1px solid #dce5f2; }
+        time { font-weight:700; color:#234b9e; }
+    </style>
+</head>
+<body>
+<main>
+    <p class="muted">Учебная неделя · {{ group }}</p>
+    <h1>Расписание колледжа</h1>
+    <form method="get">
+        <label for="group">Группа</label>
+        <select id="group" name="group">
+            {% for choice in groups %}
+            <option value="{{ choice }}"{% if choice == group %} selected{% endif %}>{{ choice }}</option>
+            {% endfor %}
+        </select>
+        <input type="hidden" name="day" value="{{ day }}">
+        <button type="submit">Показать</button>
+    </form>
+    <nav aria-label="Дни недели">
+        {% for name, date in week %}
+        <a href="?group={{ group|urlencode }}&amp;day={{ forloop.counter0 }}"{% if forloop.counter0 == day %} aria-current="true"{% endif %}>
+            {{ name }} · {{ date|date:"d.m" }}
+        </a>
+        {% endfor %}
+    </nav>
+    <section>
+        <h2>{{ day_name }}</h2>
+        {% if lessons %}
+        <ol>
+            {% for time, subject, room in lessons %}
+            <li><time>{{ time }}</time><h3>{{ subject }}</h3><p class="muted">Аудитория: {{ room }}</p></li>
+            {% endfor %}
+        </ol>
+        {% else %}
+        <p>Занятий нет.</p>
+        {% endif %}
+    </section>
+    <p class="muted">Демонстрационное расписание из учебного проекта.</p>
+</main>
+</body>
+</html>
