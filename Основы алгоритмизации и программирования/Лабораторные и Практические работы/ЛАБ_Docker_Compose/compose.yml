@@ -1,0 +1,16 @@
+services:
+  web:
+    build: .
+    image: netlab-guestbook:1.0
+    container_name: lab-flask-sqlalchemy
+    ports:
+      - "127.0.0.1:5000:5000"
+    environment:
+      DB_PATH: /data/data.db
+      FLASK_ENV: development
+    volumes:
+      - sqlite-data:/data
+      - ./app.py:/app/app.py
+    restart: unless-stopped
+volumes:
+  sqlite-data:

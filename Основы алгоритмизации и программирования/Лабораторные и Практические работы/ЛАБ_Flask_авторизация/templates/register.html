@@ -1,0 +1,1 @@
+{% extends 'base.html' %}{% block content %}<h1>Регистрация</h1><form method="post">{{ form.hidden_tag() }}{% for field in [form.username, form.email, form.password] %}<div class="field">{{ field.label }}{{ field() }}{% for error in field.errors %}<p class="error">{{ error }}</p>{% endfor %}</div>{% endfor %}<button>Создать аккаунт</button></form>{% endblock %}

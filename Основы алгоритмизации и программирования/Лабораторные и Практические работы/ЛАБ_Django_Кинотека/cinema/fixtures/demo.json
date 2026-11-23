@@ -1,0 +1,68 @@
+[
+  {
+    "model": "cinema.director",
+    "pk": 1,
+    "fields": {
+      "name": "Кристофер Нолан",
+      "country": "Великобритания"
+    }
+  },
+  {
+    "model": "cinema.director",
+    "pk": 2,
+    "fields": {
+      "name": "Георгий Данелия",
+      "country": "СССР"
+    }
+  },
+  {
+    "model": "cinema.genre",
+    "pk": 1,
+    "fields": {
+      "name": "Фантастика"
+    }
+  },
+  {
+    "model": "cinema.genre",
+    "pk": 2,
+    "fields": {
+      "name": "Комедия"
+    }
+  },
+  {
+    "model": "cinema.movie",
+    "pk": 1,
+    "fields": {
+      "title": "Интерстеллар",
+      "year": 2014,
+      "rating": 9,
+      "duration_minutes": 169,
+      "director": 1,
+      "genre": 1
+    }
+  },
+  {
+    "model": "cinema.movie",
+    "pk": 2,
+    "fields": {
+      "title": "Начало",
+      "year": 2010,
+      "rating": 8,
+      "duration_minutes": 148,
+      "director": 1,
+      "genre": 1
+    }
+  },
+  {
+    "model": "cinema.movie",
+    "pk": 3,
+    "fields": {
+      "title": "Мимино",
+      "year": 1977,
+      "rating": 8,
+      "duration_minutes": 97,
+      "director": 2,
+      "genre": 2
+    }
+  }
+]
