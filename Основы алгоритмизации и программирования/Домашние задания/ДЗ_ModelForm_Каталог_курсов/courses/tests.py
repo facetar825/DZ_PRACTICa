@@ -17,13 +17,13 @@ class CourseTests(TestCase):
         self.assertFalse(CourseForm(dict(self.data, title="X" * 101)).is_valid())
 
     def test_create_and_edit_preserve_single_record(self):
-        self.assertContains(self.client.get("/"), "Курсов пока нет")
-        self.assertEqual(self.client.get("/courses/new/").status_code, 200)
-        self.assertRedirects(self.client.post("/courses/new/", self.data), "/")
+        self.assertContains(self.client.get("/courses/"), "Курсов пока нет")
+        self.assertEqual(self.client.get("/courses/add/").status_code, 200)
+        self.assertRedirects(self.client.post("/courses/add/", self.data), "/courses/")
         course = Course.objects.get()
         edit = f"/courses/{course.pk}/edit/"
         self.assertContains(self.client.get(edit), "Основы Python")
-        self.assertRedirects(self.client.post(edit, dict(self.data, title="Продвинутый Python", seats=30)), "/")
+        self.assertRedirects(self.client.post(edit, dict(self.data, title="Продвинутый Python", seats=30)), "/courses/")
         self.assertEqual(Course.objects.count(), 1)
         course.refresh_from_db()
         self.assertEqual(course.seats, 30)
@@ -33,11 +33,25 @@ class CourseTests(TestCase):
         self.assertContains(invalid, "Основы Python")
         course.refresh_from_db()
         self.assertEqual(course.title, "Продвинутый Python")
-        self.assertContains(self.client.get("/"), "Продвинутый Python")
+        self.assertContains(self.client.get("/courses/"), "Продвинутый Python")
         self.assertEqual(self.client.get("/courses/9999/edit/").status_code, 404)
 
     def test_csrf(self):
         client = Client(enforce_csrf_checks=True)
-        self.assertEqual(client.post("/courses/new/", self.data).status_code, 403)
-        client.get("/courses/new/")
-        self.assertRedirects(client.post("/courses/new/", dict(self.data, csrfmiddlewaretoken=client.cookies["csrftoken"].value)), "/")
+        self.assertEqual(client.post("/courses/add/", self.data).status_code, 403)
+        client.get("/courses/add/")
+        self.assertRedirects(client.post("/courses/add/", dict(self.data, csrfmiddlewaretoken=client.cookies["csrftoken"].value)), "/courses/")
+
+    def test_required_routes_save_boundaries_and_reject_invalid(self):
+        for seats in [1, 30]:
+            self.assertRedirects(
+                self.client.post("/courses/add/", dict(self.data, seats=seats)),
+                "/courses/",
+            )
+        self.assertEqual(Course.objects.count(), 2)
+        for seats in [0, 31]:
+            response = self.client.post("/courses/add/", dict(self.data, seats=seats))
+            self.assertContains(response, "Количество мест должно быть от 1 до 30.")
+        self.assertEqual(Course.objects.count(), 2)
+        self.assertEqual(self.client.get("/").status_code, 200)
+        self.assertEqual(self.client.get("/courses/new/").status_code, 200)
