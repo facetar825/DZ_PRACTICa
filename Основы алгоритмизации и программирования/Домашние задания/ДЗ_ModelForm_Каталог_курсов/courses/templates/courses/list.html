@@ -1,0 +1,1 @@
+{% extends 'base.html' %}{% block content %}{% for course in courses %}<article class="card"><h2>{{ course.title }}</h2><p style="white-space:pre-wrap">{{ course.description }}</p><p>Количество мест: {{ course.seats }}</p><a href="{% url 'course_edit' course.pk %}">Редактировать</a></article>{% empty %}<p>Курсов пока нет. Добавьте первый курс.</p>{% endfor %}{% endblock %}
