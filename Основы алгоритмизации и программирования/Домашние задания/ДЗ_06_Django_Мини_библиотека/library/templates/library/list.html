@@ -1,0 +1,1 @@
+{% extends 'base.html' %}{% block content %}{% for book in books %}<article class="card"><h2>{{ book.title }}</h2><p>{{ book.author.name }} · {{ book.year }}</p></article>{% empty %}<p>Книг пока нет. Добавьте первую книгу.</p>{% endfor %}{% endblock %}

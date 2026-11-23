@@ -1,0 +1,16 @@
+[
+  {
+    "model": "library.author",
+    "pk": 1,
+    "fields": {
+      "name": "Александр Пушкин"
+    }
+  },
+  {
+    "model": "library.author",
+    "pk": 2,
+    "fields": {
+      "name": "Антон Чехов"
+    }
+  }
+]
