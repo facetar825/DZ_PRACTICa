@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ru">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NetLab WebSocket Echo</title>
+<style>
+body{max-width:46rem;margin:2rem auto;padding:0 1rem;font:18px/1.5 system-ui;background:#eef3fa;color:#152c4c}
+button,input{font:inherit;padding:.4rem;margin:.3rem 0}input{max-width:100%;box-sizing:border-box}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;background:white;padding:1rem;border:1px solid #b0c0d8}
+</style>
+<h1>NetLab WebSocket Echo</h1>
+<p id="status" role="status">Соединение закрыто</p>
+<button id="connect">Подключиться</button>
+<button id="disconnect" disabled>Отключиться</button>
+<form id="form">
+<label for="message">Текст сообщения</label><br>
+<input id="message" value="PING" required maxlength="2048">
+<button id="send" disabled>Отправить</button>
+</form>
+<pre id="log" aria-live="polite"></pre>
+<script>
+let socket;
+const connect = document.getElementById('connect');
+const disconnect = document.getElementById('disconnect');
+const send = document.getElementById('send');
+const status = document.getElementById('status');
+const message = document.getElementById('message');
+const log = (text) => {
+    const output = document.getElementById('log');
+    output.textContent = (output.textContent + text + '\n').slice(-16000);
+};
+connect.onclick = () => {
+    connect.disabled = true;
+    status.textContent = 'Подключение…';
+    socket = new WebSocket('ws://' + location.host + '/ws');
+    socket.addEventListener('open', () => {
+        status.textContent = 'Соединение открыто';
+        send.disabled = false;
+        disconnect.disabled = false;
+        log('OPEN');
+    });
+    socket.addEventListener('message', (event) => log('Сервер → ' + event.data));
+    socket.addEventListener('error', () => log('ERROR'));
+    socket.addEventListener('close', (event) => {
+        status.textContent = 'Соединение закрыто';
+        connect.disabled = false;
+        send.disabled = true;
+        disconnect.disabled = true;
+        log('CLOSE ' + event.code + ' ' + event.reason);
+    });
+};
+document.getElementById('form').onsubmit = (event) => {
+    event.preventDefault();
+    if (new TextEncoder().encode(message.value).length > 2048) {
+        log('Лимит — 2048 байт UTF-8');
+        return;
+    }
+    if (socket?.readyState === WebSocket.OPEN) {
+        socket.send(message.value);
+        log('Клиент → ' + message.value);
+    }
+};
+disconnect.onclick = () => {
+    send.disabled = true;
+    disconnect.disabled = true;
+    socket.close(1000, 'Завершили демонстрацию');
+};
+</script>
+</html>
