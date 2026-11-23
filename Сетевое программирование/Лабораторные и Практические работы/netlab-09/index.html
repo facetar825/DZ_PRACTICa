@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ru">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NetLab Chat</title>
+<style>
+body{max-width:48rem;margin:2rem auto;padding:0 1rem;font:17px/1.5 system-ui;background:#edf3fa;color:#152b49}
+input,button{font:inherit;padding:.5rem;max-width:100%;box-sizing:border-box}
+#messages{height:18rem;overflow:auto;background:white;padding:1.5rem;overflow-wrap:anywhere}
+label{display:block;margin-top:.7rem}
+</style>
+<h1>NetLab Chat</h1>
+<label for="name">Имя</label><input id="name" maxlength="20" required>
+<button id="connect">Подключиться</button><button id="disconnect" disabled>Отключиться</button>
+<p id="status" role="status">Не подключено</p>
+<p id="users">Онлайн: —</p><p id="count">Сообщений: 0</p>
+<ul id="messages" aria-live="polite"></ul>
+<form id="form">
+<label for="to">Получатель личного сообщения (пусто — общий чат)</label><input id="to" maxlength="20">
+<label for="message">Сообщение или /who</label><input id="message" maxlength="200" required>
+<button id="send" disabled>Отправить</button>
+</form>
+<script>
+const $ = (id) => document.getElementById(id);
+let socket = null;
+let joined = false;
+function line(text) {
+    const li = document.createElement('li');
+    li.textContent = text;
+    $('messages').append(li);
+    while ($('messages').children.length > 200) $('messages').firstChild.remove();
+    $('messages').scrollTop = $('messages').scrollHeight;
+}
+$('connect').onclick = () => {
+    const name = $('name').value.trim();
+    if (!name || name.length > 20) return line('Имя: 1–20 символов');
+    $('connect').disabled = true;
+    $('name').disabled = true;
+    $('status').textContent = 'Подключение…';
+    socket = new WebSocket('ws://' + location.host + '/ws');
+    socket.addEventListener('open', () => {
+        $('disconnect').disabled = false;
+        socket.send(JSON.stringify({ type:'join', name }));
+    });
+    socket.addEventListener('message', (event) => {
+        let p;
+        try { p = JSON.parse(event.data); } catch { return line('Некорректный ответ'); }
+        if (p.type === 'WELCOME') {
+            joined = true;
+            $('send').disabled = false;
+            $('status').textContent = 'В чате';
+            line(p.text);
+        } else if (p.type === 'online') {
+            $('users').textContent = 'Онлайн: ' + p.participants.map((u) =>
+                u.name + ' (с ' + new Date(u.connectedAt).toLocaleTimeString('ru-RU') + ')').join(', ');
+        } else if (p.type === 'who') {
+            line('Участники: ' + p.users.join(', '));
+        } else if (p.type === 'chat' || p.type === 'private') {
+            line('[' + new Date(p.time).toLocaleTimeString('ru-RU') + '] ' +
+                p.name + (p.type === 'private' ? ' → ' + p.to + ' (личное)' : '') + ': ' + p.text);
+        } else if (p.type === 'error') {
+            line(p.code + ': ' + p.message);
+            if (!joined) socket.close(1000, 'Join failed');
+        } else if (p.text) line(p.text);
+        if (Number.isInteger(p.messagesCount)) $('count').textContent = 'Сообщений: ' + p.messagesCount;
+    });
+    socket.addEventListener('error', () => line('Ошибка WebSocket'));
+    socket.addEventListener('close', (event) => {
+        joined = false;
+        $('connect').disabled = false;
+        $('name').disabled = false;
+        $('send').disabled = true;
+        $('disconnect').disabled = true;
+        $('users').textContent = 'Онлайн: —';
+        $('status').textContent = 'Отключено, код ' + event.code;
+        line('Соединение закрыто');
+    });
+};
+$('form').onsubmit = (event) => {
+    event.preventDefault();
+    const text = $('message').value.trim();
+    if (!text || !joined || socket.readyState !== WebSocket.OPEN) return;
+    const to = $('to').value.trim();
+    socket.send(JSON.stringify({ type: to ? 'private' : 'chat', text, to }));
+    $('message').value = '';
+};
+$('disconnect').onclick = () => {
+    $('send').disabled = true;
+    $('disconnect').disabled = true;
+    socket.close(1000, 'Выход из чата');
+};
+</script>
+</html>
